@@ -40,3 +40,10 @@ To test an algorithm, use the test_rmse.py command :
 You can also use "all" to compare them (defined in test_rmse.py)
 
 	python test_rmse jamendoalbumreviews all
+
+Discuss
+-------
+
+There's a thread here : http://www.jamendo.com/en/forums/discussion/13986/new-jamendo-recommendation-sdk/
+
+We can also use the github issues feature to improve the SDK
