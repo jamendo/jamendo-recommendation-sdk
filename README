@@ -1,0 +1,42 @@
+Jamendo Recommendation SDK
+--------------------------
+
+The goal of this project is to start a community effort to improve music recommendations on Jamendo.
+
+We want to provide all the tools and test datasets so that everyone can develop, test and submit their own algorithms.
+
+
+Datasets
+--------
+
+We try to have a common format for all the datasets but it's not a strong requirement.
+
+Currently it's : [User ID];[Item ID];[Rating];[Weight];[Date]
+
+ - jamendoalbumreviews : Ratings of the albums by the users. All weights currently equal 0.5 but we could take into account some kind of "karma" for the users.
+
+ - jamendoalbumstarred : Albums added to favourites of users ("stars"). Rating=Weight=1 ; We'll add the Date field on request.
+ 						This dataset currently doesn't work with the rest of the SDK and needs some love. 
+ 
+These two should be enough to get some algorithms started but feel free to ask us for more!
+
+
+Algorithms
+----------
+
+We've included a couple of simple ones to showcase the SDK. You should obviously be able to do better, of to tune the SVD implementation
+that seems to yield good results.
+
+
+Methodology
+-----------
+
+Currently we're inspired by the Netflix Challenge, and use RMSE to compare algorithms. You may add others measures of course.
+
+To test an algorithm, use the test_rmse.py command :
+
+	python test_rmse.py [dataset] [algorithm]
+
+You can also use "all" to compare them (defined in test_rmse.py)
+
+	python test_rmse jamendoalbumreviews all
