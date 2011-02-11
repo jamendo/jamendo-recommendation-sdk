@@ -18,8 +18,10 @@ def testAlgorithm(dataset,algorithm):
 
     print "[%s] Splitting learn & probe" % (algorithm)
     #(learn,probe) = dataset.splitInLearnAndProbe(lambda row:row[4]%80==0)
-    
-    (learn,probe) = dataset.splitInLearnAndProbe(lambda row:row[1]!=32)
+    #(learn,probe) = dataset.splitInLearnAndProbe(lambda row:row[1]!=33 )
+    learn_ids = (33,80753,65893,51330,41201,24426, 23932, 16853, 6534, 2131, 43152, 43153, 43155, 43156, 43161, 43162, 43163, 43164, 43169)
+    (learn,probe) = dataset.splitInLearnAndProbe(lambda row:row[1] not in learn_ids)
+    #(learn,probe) = dataset.splitInLearnAndProbe(lambda row:row[1]!=32)
 
     a = loadAlgorithm(algorithm)
     
