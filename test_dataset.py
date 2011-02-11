@@ -59,7 +59,7 @@ if __name__ == "__main__":
     datasets = [sys.argv[1]]
     
     if datasets == ['all']: 
-        datasets = dataset_ratealgo.keys() + ['jamendoalbumreviews.csv', 'jamendoalbumstarred.csv', 'jamendoprocarts.csv', 'jamendoartistreviews.csv']
+        datasets = dataset_ratealgo.keys() + ['jamendoalbumreviews.csv', 'jamendoalbumstarred.csv', 'jamendoprocarts.csv']
         
     if plot == True: 
         import matplotlib.pyplot as plt

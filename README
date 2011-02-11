@@ -18,6 +18,23 @@ Currently it's : [User ID];[Item ID];[Rating];[Weight];[Date]
  - jamendoalbumstarred : Albums added to favourites of users ("stars"). Rating=Weight=1 ; We'll add the Date field on request.
  						This dataset currently doesn't work with the rest of the SDK and needs some love. 
  
+ - jamendoalbumallrates : Use a tuple with different rates. This tuple has the form (reviews rate, 1 if starred, 1 if playlisted ). As jamendoartistallrates, 
+ 						 for such a dataset is used csv.Dataset_ratestuple that makes the eval parsing of the rate tuple and, using the test_algo, compute a
+ 						 global rate combining the subrates in the tuple. This kind of datasets is yielded using mergedataset.py.
+ 						 
+ - jamendoartistallrates : Here rates are in the form (average of artist's albums reviews from that user, 1 if artist has been starred, #album starred/ #album published)
+ 						  Use csv.Dataset_ratestuple (see above). This dataset has the advantage to have the greatest data density, but we prefer to consider albums as 
+ 						  unit to be recoommend!  
+ 	
+You can have some stats on datasets using test_dataset.py. For instance launching 
+
+	python test_dataset.py jamendoalbumallrates.csv 
+
+you get printed the number of users and items the dataset has some rates for, the number of the rates, and finally the matrix % of filing as a density measure. 
+To evaluate a recommendation system effectiveness the number of users and items can be served is also important, and the higher density is, the best results can be reached! 
+Is useful to compare our data with the one of netflix prize: http://en.wikipedia.org/wiki/Netflix_Prize. As you can see their dataset has a very better density (1.7%) than
+our best dataset (jamendoalbumallrates) with density of 0.019! This makes all more challenging for us ;-)
+					   
 These two should be enough to get some algorithms started but feel free to ask us for more!
 
 
@@ -39,7 +56,7 @@ To test an algorithm, use the test_rmse.py command :
 
 You can also use "all" to compare them (defined in test_rmse.py)
 
-	python test_rmse jamendoalbumreviews all
+	python test_rmse.py jamendoalbumreviews all
 
 Discuss
 -------
